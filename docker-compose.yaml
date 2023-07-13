@@ -1,0 +1,38 @@
+version: "1.0"
+
+services:
+  runner:
+    build: ./runner
+    container_name: runner
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: bikeKia
+      MYSQL_USER: root
+      MYSQL_PASSWORD: passwd
+    restart: always
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: passwd
+      MYSQL_DATABASE: bikeKia
+    expose:
+      - 3306
+    volumes:
+      - mysql_data_bikeKia:/var/lib/mysql
+
+  web:
+    build: ./web
+    container_name: web
+    ports:
+      - 8080:80
+    restart: always
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data_bikeKia:
