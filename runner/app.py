@@ -1,5 +1,5 @@
 import requests
-import mysql.connector
+import mysql.connector  # type: ignore
 import time
 import xml.etree.ElementTree as ET
 
