@@ -3,7 +3,7 @@ import mysql.connector  # type: ignore
 import time
 import xml.etree.ElementTree as ET
 
-MESASURE_INTERVAL = 5*60  # 5 minutes
+MESASURE_INTERVAL = 5  # 5 minutes
 RETRYING_INTERVAL = 60  # 1 minute
 
 # wait for mysql to start properly
